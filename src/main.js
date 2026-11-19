@@ -17,7 +17,7 @@ const initApp = () => {
   app.innerHTML = `
     <header class="app-header">
       <div class="header-content">
-        <h1 class="logo">RasaNusa <span>Cakery</span></h1>
+        <h1 class="logo">Cakery</h1>
         <nav class="main-nav">
           <button id="nav-catalog" class="nav-btn active">Katalog</button>
           <button id="nav-admin" class="nav-btn">Admin Dashboard</button>
@@ -46,7 +46,7 @@ const initApp = () => {
     <footer class="app-footer">
       <div class="footer-content">
         <div class="footer-brand">
-          <h3 class="footer-logo">RasaNusa <span>Cakery</span></h3>
+          <h3 class="footer-logo">Cakery</h3>
           <p>Kue artisan premium dibuat dengan cinta & bahan pilihan terbaik. Fresh from the oven every morning.</p>
         </div>
         <div class="footer-links">
@@ -88,7 +88,7 @@ const initApp = () => {
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2024 RasaNusa Cakery. Dibuat dengan ❤️ untuk pecinta kue Indonesia.</p>
+        <p>&copy; 2024 Cakery. Dibuat dengan ❤️ untuk pecinta kue Indonesia.</p>
       </div>
     </footer>
   `;

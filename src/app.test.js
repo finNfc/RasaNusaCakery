@@ -15,7 +15,7 @@ const localStorageMock = (() => {
 })();
 vi.stubGlobal('localStorage', localStorageMock);
 
-describe('RasaNusa Logic Tests', () => {
+describe('Cakery Logic Tests', () => {
   beforeEach(() => {
     localStorage.clear();
     vi.clearAllMocks();
