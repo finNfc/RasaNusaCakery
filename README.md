@@ -1,79 +1,96 @@
-# RasaNusa Cakery - Dokumentasi Teknis
+# Cakery (RasaNusa Cakery)
 
-## ✅ Checklist Keamanan & Kualitas
+Aplikasi web toko kue artisan berbasis **Vite + Vanilla JS**. Menyediakan katalog kue premium, pencarian, filter kategori, pemesanan langsung via WhatsApp, serta **Admin Dashboard** untuk manajemen data produk secara lokal.
 
-- [x] **Token/API Key**: Tidak ada di kode sumber
-- [x] **Data Pelanggan Nyata**: Tidak ada (hanya data produk dummy)
-- [x] **Build**: Berhasil (`npm run build`)
-- [x] **Test**: 10/10 lolos (`npm test` dengan jsdom)
-- [x] **WhatsApp Link**: Logika benar, nomor placeholder (`+628****7890`)
-- [x] **Mobile Responsif**: Breakpoint 768px & 1024px di CSS
-- [x] **localStorage Limitations**: Terddokumentasi di bawah
+---
 
-## 🔗 Verifikasi WhatsApp Link
+## 🎯 Tujuan
+Menyediakan antarmuka toko kue online yang elegan, responsif, dan mudah digunakan (tanpa kompleksitas backend yang berat), cocok untuk UMKM kuliner skala kecil hingga menengah.
 
-**Logika** (`src/ui.js:9-14`):
-```javascript
-buildWhatsAppUrl = (nomor, produk) => {
-  const cleanNumber = nomor.replace(/\D/g, '');
-  const finalNumber = cleanNumber.startsWith('0') ? '62' + cleanNumber.slice(1) : cleanNumber;
-  const message = `Halo, saya mau pesan ${produk.nama} (ID: ${produk.id})`;
-  return `https://wa.me/${finalNumber}?text=${encodeURIComponent(message)}`;
-}
-```
+---
 
-**Hasil untuk placeholder `+628****7890`**:
-- Membersihkan: `6287890` (hanya digit)
-- Format final: `6287890` (tidak diawali `0`)
-- URL: `https://wa.me/6287890?text=Halo%2C%20saya%20mau%20pesan%20Kue%20Lapis%20(ID%3A%201)`
+## ✨ Fitur Utama
+1. **Katalog & Filter Interaktif**:
+   - Pencarian produk secara real-time berdasarkan nama.
+   - Filter kategori (Kue & Roti, Minuman).
+   - Pengurutan berdasarkan harga (rendah ke tinggi, tinggi ke rendah) dan stok.
+2. **Pemesanan via WhatsApp**:
+   - Setiap kartu produk memiliki tombol pemesanan yang otomatis mengarahkan ke WhatsApp dengan format pesan siap kirim.
+3. **Admin Dashboard (Client-Side Management)**:
+   - Tambah, edit, dan hapus produk.
+   - Ekspor data produk ke file JSON (`rasanusa-products.json`).
+   - Impor data produk dari file JSON dengan validasi skema ketat.
+   - Tombol reset demo untuk mengembalikan data ke kondisi awal.
+4. **Keamanan**:
+   - Sanitasi string / `escapeHtml` untuk mencegah XSS pada data dinamis.
+5. **Responsif**:
+   - Desain tata letak yang dioptimalkan untuk perangkat mobile dan desktop.
 
-> ⚠️ **Catatan**: Nomor `+628****7890` adalah **placeholder demo**. Di produksi, ganti dengan nomor WhatsApp bisnis asli (format: `+628xxxxxxxxxx` minimal 10-12 digit setelah `62`).
+---
 
-## 📱 Responsif Mobile
+## 🛠️ Stack Teknologi
+- **Build Tool**: Vite (v5)
+- **Bahasa**: Vanilla JavaScript (ES Modules), HTML5, CSS3 (Custom Properties, Google Fonts: *Playfair Display* & *DM Sans*)
+- **Testing**: Vitest + JSDOM (v1.6)
+- **Deployment**: Vercel
 
-CSS mengandung breakpoint:
-- **≤ 768px**: Stack vertikal (header, toolbar, grid 1 kolom, footer 1 kolom)
-- **≤ 1024px**: Footer 2 kolom
-- **> 1024px**: Layout penuh (grid multi-kolom, footer 5 kolom)
+---
 
-Tested via Chrome DevTools device toolbar - tidak ada overflow horizontal, touch target ≥ 48px.
-
-## ⚠️ Keterbatasan localStorage (Key: `rasanusa:products:v1`)
-
-| Batasan | Detail | Mitigasi |
-|---------|--------|----------|
-| **Kapasitas** | ~5-10 MB per origin (browser dependent) | Cukup untuk ratusan produk; tidak untuk gambar base64 |
-| **Sinkronisasi** | Hanya device/browser yang sama | Tidak cocok multi-device / multi-user |
-| **Persistensi** | Bisa dihapus user via "Clear Site Data" | Export/Import JSON tersedia di Admin Dashboard |
-| **Concurrency** | Tidak ada locking; race condition jika tab ganda | Demo single-user; produksi butuh backend |
-| **Tipe Data** | Hanya string (perlu `JSON.parse/stringify`) | Validasi ketat di `store.load()` |
-| **Keamanan** | Terbaca script same-origin (XSS risk) | `escapeHtml` pada render; tidak simpan data sensitif |
-| **Private Browsing** | Blokir/ditolak di beberapa browser (Safari) | Fallback ke `initialProducts` di `store.load()` |
-
-## 🛡️ Audit Keamanan (Dev Dependencies)
-
-`npm audit` melaporkan 5 kerentanan di **dev tools** (`vite`, `vitest`, `esbuild`, `tinypool`):
-- Semua **hanya mempengaruhi development server**, bukan production build
-- Production build (`dist/`) statis, tidak menjalankan Vite/Vitest
-- Upgrade major (Vite 5→8, Vitest 1→5) **tidak dilakukan** per instruksi (breaking changes, lingkungan latihan 1 hari)
-
-**Rekomendasi produksi**:
-1. `npm audit fix --force` di lingkungan terisolasi
-2. Jalankan regresi test penuh
-3. Deploy hanya folder `dist/`
-
-## 🚀 Menjalankan
+## ⚙️ Cara Instal
+Pastikan Node.js sudah terinstal di komputer Anda, lalu jalankan perintah berikut di terminal:
 
 ```bash
-# Development
-npm run dev      # http://localhost:5173
+# Kloning repository
+git clone https://github.com/finNfc/RasaNusaCakery.git
 
-# Production build
-npm run build    # Output ke dist/
+# Masuk ke direktori proyek
+cd RasaNusaCakery
 
-# Preview production build
-npm run preview  # http://localhost:4173
-
-# Test
-npm test         # Vitest + jsdom (10 tests)
+# Instal dependensi
+npm install
 ```
+
+---
+
+## 🧪 Cara Test
+Proyek ini dilengkapi dengan unit test untuk logika penyimpanan dan validasi data (`store.js`).
+
+```bash
+npm test
+```
+
+---
+
+## 📦 Cara Build (Production)
+Untuk menghasilkan berkas statis siap produksi di folder `dist/`:
+
+```bash
+npm run build
+```
+
+Untuk melihat hasil build secara lokal:
+```bash
+npm run preview
+```
+
+---
+
+## 🚀 Deployment ke Vercel
+Proyek ini dikonfigurasi untuk terintegrasi dengan Vercel:
+1. Hubungkan repository GitHub Anda ke Vercel.
+2. Vercel secara otomatis mendeteksi framework **Vite** dengan pengaturan:
+   - **Build Command**: `npm run build`
+   - **Output Directory**: `dist`
+3. Setiap *push* ke branch `main` akan memicu *deployment* otomatis.
+
+---
+
+## ⚠️ Keterbatasan Sistem (`localStorage` & Arsitektur)
+- **Penyimpanan Lokal Saja (`localStorage`)**: 
+  - Data produk disimpan pada key `rasanusa:products:v1` di browser pengguna.
+  - Perubahan data di satu perangkat/browser tidak tersinkronisasi ke perangkat lain.
+- **Tidak Ada Autentikasi Backend**:
+  - Halaman Admin Dashboard bersifat terbuka secara klien tanpa proteksi password/token backend. 
+  - Tidak cocok untuk sistem multi-user dengan manajemen hak akses (RBAC).
+- **Kapasitas Penyimpanan**:
+  - `localStorage` dibatasi sekitar 5–10 MB, tidak disarankan untuk menyimpan gambar biner berukuran besar (gunakan URL eksternal untuk gambar).

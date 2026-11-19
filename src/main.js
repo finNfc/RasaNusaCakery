@@ -43,54 +43,6 @@ const initApp = () => {
       </div>
     </div>
     <main id="content-area"></main>
-    <footer class="app-footer">
-      <div class="footer-content">
-        <div class="footer-brand">
-          <h3 class="footer-logo">Cakery</h3>
-          <p>Kue artisan premium dibuat dengan cinta & bahan pilihan terbaik. Fresh from the oven every morning.</p>
-        </div>
-        <div class="footer-links">
-          <div class="footer-column">
-            <h4>Menu</h4>
-            <ul>
-              <li><a href="#katalog">Katalog Kue</a></li>
-              <li><a href="#unggulan">Produk Unggulan</a></li>
-              <li><a href="#custom">Custom Cake</a></li>
-              <li><a href="#minuman">Minuman</a></li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h4>Layanan</h4>
-            <ul>
-              <li><a href="#pesan">Pesan via WhatsApp</a></li>
-              <li><a href="#antrian">Cek Antrian</a></li>
-              <li><a href="#kirim">Pengiriman</a></li>
-              <li><a href="#faq">FAQ</a></li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h4>Kontak</h4>
-            <ul>
-              <li>📍 Jl. Rasa Nusantara No. 88</li>
-              <li>📞 +62 812-3456-7890</li>
-              <li>✉️ hello@rasanusacakery.com</li>
-              <li>🕐 Sen-Ming: 08:00 - 21:00</li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h4>Ikuti Kami</h4>
-            <div class="social-links">
-              <a href="#" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-              <a href="#" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-              <a href="#" aria-label="TikTok"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16.5 3a5.5 5.5 0 0 1 0 11H6.5a5.5 5.5 0 0 1 0-11h10z"/><path d="M12 6.5v7"/><path d="M10 10.5h4"/></svg></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2024 Cakery. Dibuat dengan ❤️ untuk pecinta kue Indonesia.</p>
-      </div>
-    </footer>
   `;
 
   const contentArea = document.getElementById('content-area');
