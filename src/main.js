@@ -1,4 +1,5 @@
 import './style.css';
+import './footer.css';
 import { initialProducts, ownerNumber } from './products.js';
 import { store } from './store.js';
 import { renderProducts, renderDashboard, buildWhatsAppUrl } from './ui.js';
@@ -43,6 +44,11 @@ const initApp = () => {
       </div>
     </div>
     <main id="content-area"></main>
+    <footer class="app-footer">
+      <div class="footer-bottom">
+        <p>&copy; 2024 Cakery. Dibuat dengan ❤️ untuk pecinta kue Indonesia.</p>
+      </div>
+    </footer>
   `;
 
   const contentArea = document.getElementById('content-area');

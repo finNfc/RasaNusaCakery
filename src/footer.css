@@ -1,0 +1,17 @@
+/* ===== FOOTER ===== */
+.app-footer {
+  background: var(--cocoa);
+  color: var(--warm-white);
+  padding: 1.5rem;
+  margin-top: auto;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.footer-bottom {
+  max-width: 1300px;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--blush);
+  opacity: 0.8;
+  font-size: 0.875rem;
+}
